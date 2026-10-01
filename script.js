@@ -1,15 +1,10 @@
 const root = document.documentElement;
-const toggle = document.querySelector("[data-theme-toggle]");
-const year = document.querySelector("[data-year]");
+const toggle = document.getElementById("theme-toggle");
+const toggleLabel = document.getElementById("theme-label");
+const clock = document.getElementById("pristina-clock");
+const year = document.getElementById("current-year");
 
-function readStoredTheme() {
-  try {
-    return localStorage.getItem("theme");
-  } catch (e) {
-    return null;
-  }
-}
-
+/* Theme */
 function saveTheme(theme) {
   try {
     localStorage.setItem("theme", theme);
@@ -18,76 +13,44 @@ function saveTheme(theme) {
   }
 }
 
-const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-const initial = readStoredTheme() || (prefersLight ? "light" : "dark");
+function syncToggle(theme) {
+  const next = theme === "dark" ? "light" : "dark";
+  if (toggleLabel) toggleLabel.textContent = next === "dark" ? "Dark" : "Light";
+  if (toggle) toggle.setAttribute("aria-label", "Switch to " + next + " theme");
+}
 
 function applyTheme(theme) {
-  root.dataset.theme = theme;
+  root.setAttribute("data-theme", theme);
   saveTheme(theme);
-  if (toggle) {
-    toggle.setAttribute(
-      "aria-label",
-      theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
-    );
+  syncToggle(theme);
+}
+
+syncToggle(root.getAttribute("data-theme") || "light");
+
+toggle?.addEventListener("click", () => {
+  const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  applyTheme(current === "dark" ? "light" : "dark");
+});
+
+/* Pristina local time (same zone as Europe/Pristina) */
+function updateClock() {
+  if (!clock) return;
+  try {
+    clock.textContent = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Belgrade",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    }).format(new Date());
+  } catch (e) {
+    clock.textContent = "";
   }
 }
 
-applyTheme(initial);
+updateClock();
+setInterval(updateClock, 15000);
 
-toggle?.addEventListener("click", () => {
-  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-});
-
+/* Footer year */
 if (year) {
   year.textContent = String(new Date().getFullYear());
-}
-
-/* Pristina clock */
-const headerClock = document.getElementById("header-clock");
-const heroClock = document.getElementById("hero-clock");
-
-function formatTime(withSeconds) {
-  return new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Belgrade",
-    hour: "2-digit",
-    minute: "2-digit",
-    ...(withSeconds ? { second: "2-digit" } : {}),
-    hour12: false,
-  }).format(new Date());
-}
-
-function tick() {
-  if (headerClock) headerClock.textContent = formatTime(false);
-  if (heroClock) heroClock.textContent = formatTime(true);
-}
-
-tick();
-setInterval(tick, 1000);
-
-/* Highlight the current section in the side index */
-const railLinks = document.querySelectorAll("#section-nav a[data-target]");
-const sections = Array.from(railLinks)
-  .map((link) => document.getElementById(link.dataset.target))
-  .filter(Boolean);
-
-function setActive(id) {
-  railLinks.forEach((link) => {
-    if (link.dataset.target === id) {
-      link.setAttribute("aria-current", "true");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
-}
-
-if ("IntersectionObserver" in window && sections.length) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    },
-    { rootMargin: "-25% 0px -65% 0px" }
-  );
-  sections.forEach((section) => observer.observe(section));
 }

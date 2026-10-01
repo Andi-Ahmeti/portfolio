@@ -1,269 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Andi Ahmeti — computer science student at the University of Prishtina. Java and Python developer looking for internships."
-    />
-    <title>Andi Ahmeti — Computer Science Student</title>
-    <script>
-      (function () {
-        try {
-          var stored = localStorage.getItem("theme");
-          var light = window.matchMedia("(prefers-color-scheme: light)").matches;
-          document.documentElement.dataset.theme = stored || (light ? "light" : "dark");
-        } catch (e) {
-          document.documentElement.dataset.theme = "light";
-        }
-      })();
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andi Ahmeti — Computer Science Student</title>
+  <meta name="description" content="Andi Ahmeti is a computer science student at the University of Prishtina. Java and Python developer looking for an internship." />
 
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="wordmark" href="#top">Andi Ahmeti</a>
-        <nav class="top-nav" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#certs">Certifications</a>
-          <a href="#contact">Contact</a>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (dark ? "dark" : "light"));
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand-mark" href="#top">Andi Ahmeti</a>
+
+      <div class="header-controls">
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </nav>
-        <p class="clock" aria-label="Local time in Pristina">
+
+        <p class="pristina-time">
           <span>Pristina</span>
-          <time id="header-clock">--:--</time>
+          <time id="pristina-clock">--:--</time>
         </p>
-        <button
-          type="button"
-          class="theme-toggle"
-          data-theme-toggle
-          aria-label="Switch to light theme"
-        >
-          <span class="theme-toggle-track" aria-hidden="true">
-            <span class="theme-toggle-thumb"></span>
-          </span>
-          <span class="theme-toggle-label">Theme</span>
+
+        <button type="button" class="theme-button" id="theme-toggle">
+          <span id="theme-label">Dark</span>
         </button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main id="main">
-      <section class="hero" id="top">
-        <div class="page hero-grid">
-          <div class="hero-meta">
-            <p class="meta-line">Pristina, Kosovo</p>
-            <p class="meta-line">University of Prishtina</p>
-            <p class="meta-line meta-time">
-              Local time <time id="hero-clock">--:--:--</time>
-            </p>
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="container hero-layout">
+        <div>
+          <h1 class="hero-headline">
+            <span class="sr-only">Andi Ahmeti. </span>I build object-oriented software in Java and Python, and I care about how it looks and feels to use.
+          </h1>
+          <p class="hero-statement">
+            Computer science student at the <strong>University of Prishtina</strong>, looking for a software engineering internship.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="https://www.linkedin.com/in/andi-ahmeti-a71281158" target="_blank" rel="noopener noreferrer">
+              Contact me on LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+            </a>
+            <span class="hero-status">On-site, hybrid, or remote</span>
           </div>
-          <div class="hero-main">
-            <p class="kicker">Computer science student</p>
-            <h1>Andi Ahmeti</h1>
-            <p class="statement">
-              I build object-oriented software in Java and Python, and I care
-              about how it looks and feels to use.
-            </p>
-            <div class="hero-links">
-              <a
-                class="link-strong"
-                href="https://www.linkedin.com/in/andi-ahmeti-a71281158"
-                target="_blank"
-                rel="noopener noreferrer"
-                >LinkedIn<span aria-hidden="true"> ↗</span></a
-              >
-              <a class="link-strong" href="#contact">Get in touch</a>
-              <span class="availability">Looking for an internship</span>
+        </div>
+
+        <div class="index-card">
+          <h2 class="index-card-title">At a glance</h2>
+          <dl class="index-list">
+            <div class="index-item">
+              <dt>Studying</dt>
+              <dd>Computer Science, University of Prishtina (2025 to 2028)</dd>
             </div>
+            <div class="index-item">
+              <dt>Main languages</dt>
+              <dd>Java, Python</dd>
+            </div>
+            <div class="index-item">
+              <dt>Based in</dt>
+              <dd>Pristina, Kosovo</dd>
+            </div>
+            <div class="index-item">
+              <dt>Speaks</dt>
+              <dd>Albanian (native), English (professional)</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="container main-grid">
+      <div class="primary-col">
+        <section class="content-block" id="projects" aria-labelledby="heading-projects">
+          <h2 class="section-title" id="heading-projects">Projects</h2>
+
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">Faceit Player Tracker &amp; Analytics</h3>
+              <p class="project-date">January 2026 to present</p>
+            </div>
+            <p class="project-desc">
+              A custom Java program for tracking player rankings and stats on FACEIT. Built around OOP, logic, data handling, and custom software features. Associated with the University of Prishtina.
+            </p>
+            <p class="project-tech">
+              <span class="tech-label">Built with</span>
+              <span class="tech-pill">Java</span>
+              <span class="tech-pill">OOP</span>
+              <span class="tech-pill">Data handling</span>
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">Java Financial Calculator</h3>
+              <p class="project-date">March 2026</p>
+            </div>
+            <p class="project-desc">
+              Built during Major League Hacking Global Hack Week: practical software-engineering challenges, then a Java financial investment calculator focused on clean structure and algorithms.
+            </p>
+            <p class="project-tech">
+              <span class="tech-label">Built with</span>
+              <span class="tech-pill">Java</span>
+              <span class="tech-pill">Algorithms</span>
+            </p>
+          </article>
+        </section>
+
+        <section class="content-block" id="education" aria-labelledby="heading-education">
+          <h2 class="section-title" id="heading-education">Education</h2>
+
+          <div class="edu-item">
+            <p class="edu-period">September 2025 to October 2028</p>
+            <h3 class="edu-degree">Bachelor’s degree, Computer Science</h3>
+            <p class="edu-institution">University of Prishtina, Pristina</p>
+            <p class="edu-note">
+              Coursework includes data structures, algorithms, discrete mathematics, computer networking, and object-oriented programming in Java. Working in Java and Python.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <div class="page body-grid">
-        <aside class="rail" aria-label="Page sections">
-          <nav class="rail-nav" id="section-nav">
-            <a href="#about" data-target="about">About</a>
-            <a href="#projects" data-target="projects">Projects</a>
-            <a href="#education" data-target="education">Education</a>
-            <a href="#certs" data-target="certs">Certifications</a>
-            <a href="#contact" data-target="contact">Contact</a>
-          </nav>
-        </aside>
+          <div class="edu-item">
+            <p class="edu-period">September 2022 to May 2025</p>
+            <h3 class="edu-degree">High school diploma, natural sciences</h3>
+            <p class="edu-institution">Gjimnazi Xhevdet Doda · Grade 5.0</p>
+          </div>
+        </section>
 
-        <div class="content">
-          <section class="block" id="about">
-            <h2>About</h2>
-            <p>
-              Computer science student with a strong interest in software
-              engineering, object-oriented programming, and UI/UX design.
-              Proficient in Java, with hands-on work in hardware assembly,
-              computer networking, and algorithmic problem-solving.
-            </p>
-            <p>
-              Currently looking for internship opportunities to apply these
-              skills on real-world software products.
-            </p>
-            <ul class="skills" aria-label="Core skills">
-              <li>Java</li>
-              <li>Python</li>
-              <li>OOP</li>
-              <li>UI/UX</li>
-              <li>Data structures</li>
-              <li>Algorithms</li>
-              <li>Networking</li>
-              <li>Hardware assembly</li>
-              <li>Kotlin and TDD</li>
-            </ul>
-            <dl class="facts">
-              <div>
-                <dt>Seeking</dt>
-                <dd>Internship, on-site, hybrid, or remote</dd>
+        <section class="content-block" id="certifications" aria-labelledby="heading-certifications">
+          <h2 class="section-title" id="heading-certifications">Certifications</h2>
+
+          <ul class="cert-list">
+            <li class="cert-item">
+              <div class="cert-header">
+                <p class="cert-title">Technical Support Fundamentals</p>
+                <p class="cert-date">August 2026</p>
               </div>
-              <div>
-                <dt>Languages</dt>
-                <dd>Albanian (native), English (professional)</dd>
+              <p class="cert-issuer">Google · hardware assembly, end-user support</p>
+              <p class="cert-id">ID 9GBVTYVZ5649</p>
+            </li>
+            <li class="cert-item">
+              <div class="cert-header">
+                <p class="cert-title">Introduction to Cybersecurity</p>
+                <p class="cert-date">August 2026</p>
               </div>
-              <div>
-                <dt>Base</dt>
-                <dd>Pristina, Kosovo</dd>
+              <p class="cert-issuer">Cisco · cyber best practices</p>
+              <p class="cert-id">ID ab9781ae-32e2-4628-b085-7f86fb09d426</p>
+            </li>
+            <li class="cert-item">
+              <div class="cert-header">
+                <p class="cert-title">CCNA: Networking Basics</p>
+                <p class="cert-date">August 2026</p>
               </div>
-            </dl>
-          </section>
-
-          <section class="block" id="projects">
-            <h2>Projects</h2>
-            <p class="section-note">Java work from coursework and MLH Global Hack Week.</p>
-            <ol class="entries">
-              <li>
-                <p class="entry-meta">Java · January 2026 to present</p>
-                <h3>Faceit Player Tracker &amp; Analytics</h3>
-                <p>
-                  Custom Java program for tracking player rankings and stats on
-                  FACEIT. Built around OOP, logic, data handling, and custom
-                  software features. Associated with the University of
-                  Prishtina.
-                </p>
-                <p class="entry-tags">Java, data analysis</p>
-              </li>
-              <li>
-                <p class="entry-meta">MLH Global Hack Week · March 2026</p>
-                <h3>Java Financial Calculator</h3>
-                <p>
-                  Built during Major League Hacking Global Hack Week: practical
-                  software-engineering challenges, then a Java financial
-                  investment calculator focused on clean structure and
-                  algorithms.
-                </p>
-                <p class="entry-tags">Java, algorithms</p>
-              </li>
-            </ol>
-          </section>
-
-          <section class="block" id="education">
-            <h2>Education</h2>
-            <ol class="entries">
-              <li>
-                <p class="entry-meta">September 2025 to October 2028</p>
-                <h3>University of Prishtina</h3>
-                <p class="entry-sub">Bachelor’s degree, Computer Science</p>
-                <p>
-                  Coursework includes data structures, algorithms, discrete
-                  mathematics, computer networking, and object-oriented
-                  programming in Java. Working in Java and Python.
-                </p>
-              </li>
-              <li>
-                <p class="entry-meta">September 2022 to May 2025</p>
-                <h3>Gjimnazi Xhevdet Doda</h3>
-                <p class="entry-sub">
-                  High school diploma, natural sciences, grade 5.0
-                </p>
-              </li>
-            </ol>
-          </section>
-
-          <section class="block" id="certs">
-            <h2>Certifications</h2>
-            <p class="section-note">
-              Google, Cisco, Coursera, GDG Prishtina, and Wikimedia.
-            </p>
-            <ul class="certs">
-              <li>
-                <p class="cert-name">Technical Support Fundamentals</p>
-                <p class="cert-detail">
-                  Google · August 2026 · hardware assembly, end-user support
-                </p>
-                <p class="cert-id">ID 9GBVTYVZ5649</p>
-              </li>
-              <li>
-                <p class="cert-name">Introduction to Cybersecurity</p>
-                <p class="cert-detail">
-                  Cisco · August 2026 · cyber best practices
-                </p>
-                <p class="cert-id">ID ab9781ae-32e2-4628-b085-7f86fb09d426</p>
-              </li>
-              <li>
-                <p class="cert-name">CCNA: Networking Basics</p>
-                <p class="cert-detail">
-                  Logical Operations / Coursera · August 2026 · switching,
-                  addressing, and routing
-                </p>
-                <p class="cert-id">ID P7GZUWZ79KDG</p>
-              </li>
-              <li>
-                <p class="cert-name">TDD for Beginners with Kotlin</p>
-                <p class="cert-detail">
-                  Google Developer Group Prishtina · DevFest Kosova · December
-                  2025
-                </p>
-              </li>
-              <li>
-                <p class="cert-name">Wikipedia contribution recognition</p>
-                <p class="cert-detail">
-                  Wikimedians of Albanian Language User Group · mathematics ·
-                  December 2025
-                </p>
-              </li>
-            </ul>
-          </section>
-
-          <section class="block" id="contact">
-            <h2>Contact</h2>
-            <p class="contact-lede">
-              Best reached for internships and junior software roles. LinkedIn
-              is the fastest path.
-            </p>
-            <p>
-              <a
-                class="link-strong"
-                href="https://www.linkedin.com/in/andi-ahmeti-a71281158"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Message me on LinkedIn<span aria-hidden="true"> ↗</span></a
-              >
-            </p>
-          </section>
-        </div>
+              <p class="cert-issuer">Logical Operations / Coursera · switching, addressing, and routing</p>
+              <p class="cert-id">ID P7GZUWZ79KDG</p>
+            </li>
+            <li class="cert-item">
+              <div class="cert-header">
+                <p class="cert-title">TDD for Beginners with Kotlin</p>
+                <p class="cert-date">December 2025</p>
+              </div>
+              <p class="cert-issuer">Google Developer Group Prishtina · DevFest Kosova</p>
+            </li>
+            <li class="cert-item">
+              <div class="cert-header">
+                <p class="cert-title">Wikipedia contribution recognition</p>
+                <p class="cert-date">December 2025</p>
+              </div>
+              <p class="cert-issuer">Wikimedians of Albanian Language User Group · mathematics</p>
+            </li>
+          </ul>
+        </section>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <div class="page footer-inner">
-        <p>© <span data-year></span> Andi Ahmeti</p>
-        <p>Pristina · CS student · Java and Python</p>
+      <div class="sidebar-col">
+        <section class="sidebar-block" id="about" aria-labelledby="heading-about">
+          <h2 class="sidebar-title" id="heading-about">About</h2>
+          <p class="about-text">
+            Computer science student with a strong interest in software engineering, object-oriented programming, and UI/UX design. Proficient in Java, with hands-on work in hardware assembly, computer networking, and algorithmic problem-solving.
+          </p>
+          <p class="about-text">
+            Currently looking for internship opportunities to apply these skills on real-world software products.
+          </p>
+
+          <h3 class="skills-heading">Skills</h3>
+          <ul class="skills-cluster">
+            <li class="skill-tag">Java</li>
+            <li class="skill-tag">Python</li>
+            <li class="skill-tag">OOP</li>
+            <li class="skill-tag">UI/UX</li>
+            <li class="skill-tag">Data structures</li>
+            <li class="skill-tag">Algorithms</li>
+            <li class="skill-tag">Networking</li>
+            <li class="skill-tag">Hardware assembly</li>
+            <li class="skill-tag">Kotlin and TDD</li>
+          </ul>
+        </section>
+
+        <section class="contact-banner" id="contact" aria-labelledby="heading-contact">
+          <h2 class="contact-heading" id="heading-contact">Contact</h2>
+          <p class="contact-text">
+            Best reached for internships and junior software roles. LinkedIn is the fastest way to get to me.
+          </p>
+          <a class="primary-btn" href="https://www.linkedin.com/in/andi-ahmeti-a71281158" target="_blank" rel="noopener noreferrer">
+            Message me on LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </section>
       </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="current-year">2026</span> Andi Ahmeti</p>
+      <p>Pristina, Kosovo</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
